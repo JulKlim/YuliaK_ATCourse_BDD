@@ -28,8 +28,8 @@ public class HomePageHeaderButtons {
         userTableButton.click();
     }
 
-    public void isTitleOnUserTableCorrect(String expectedTitle) {
+    public String isTitleOnUserTableCorrect() {
         String actualTitle = driver.getTitle();
-        assertThat(actualTitle).isEqualTo(expectedTitle);
+        return actualTitle;
     }
 }

@@ -47,7 +47,7 @@ public class UserTableStepsDefinition {
     @Then("{string} page should be opened")
     public void checkUserPageIsOpened(String expectedTitle) {
         HomePageHeaderButtons homePageHeaderButtons = new HomePageHeaderButtons(driver);
-        homePageHeaderButtons.isTitleOnUserTableCorrect(expectedTitle);
+        assertThat(homePageHeaderButtons.isTitleOnUserTableCorrect()).isEqualTo(expectedTitle);
     }
 
     @Then("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
@@ -90,8 +90,8 @@ public class UserTableStepsDefinition {
         assertThat(userTableContent.getUserTableValues()).isEqualTo(expectedTableValues);
     }
 
-    @Then("^droplist should contain values in column Type for user (.*)$")
-    public void verifyDropList(String username, DataTable dataTable) {
+    @Then("droplist should contain values in column Type for user Roman")
+    public void verifyDropList(DataTable dataTable) {
         List<String> expectedDropListValues = dataTable.asList(String.class).subList(1, dataTable.asLists().size());
         UserTableContent userTableContent = new UserTableContent(driver);
         assertThat(userTableContent.getDropListValues()).isEqualTo(expectedDropListValues);
